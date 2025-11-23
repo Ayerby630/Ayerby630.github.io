@@ -16,6 +16,7 @@
                 <li><a href="#about">关于我</a></li>
                 <li><a href="#projects">作品</a></li>
                 <li><a href="#travels">足迹</a></li>
+                <li><a href="#moments">动态</a></li>
                 <li><a href="#blog">博客</a></li>
                 <li><a href="#contact">联系</a></li>
             </ul>
@@ -24,6 +25,14 @@
 
     <!-- 首页/欢迎区 -->
     <section id="home" class="hero">
+        <!-- 视频背景 -->
+        <video autoplay muted loop playsinline class="hero-video">
+            <source src="background.mp4" type="video/mp4">
+            您的浏览器不支持视频播放
+        </video>
+        <!-- 遮罩层 -->
+        <div class="hero-overlay"></div>
+
         <div class="container">
             <div class="hero-content">
                 <h1 class="fade-in">你好，我是 <span class="highlight">坚瑜</span></h1>
@@ -40,7 +49,7 @@
             <h2 class="section-title">关于我</h2>
             <div class="about-content">
                 <div class="about-image">
-                    <div class="avatar-placeholder">👤</div>
+                    <img src="avatar.jpg" alt="坚瑜的头像" class="avatar-img">
                 </div>
                 <div class="about-text">
                     <h3>你好！</h3>
@@ -221,6 +230,159 @@
             </div>
         </div>
     </section>
+
+    <!-- 生活动态 -->
+    <section id="moments" class="moments">
+        <div class="container">
+            <h2 class="section-title">生活动态</h2>
+            <p class="moments-intro">记录生活中的美好时刻 📸</p>
+
+            <!-- 添加新动态按钮 -->
+            <div class="add-moment-container">
+                <button class="add-moment-btn" onclick="openMomentEditor()">+ 添加新动态</button>
+            </div>
+
+            <div class="moments-grid" id="moments-grid">
+                <!-- 动态卡片 1 -->
+                <div class="moment-card">
+                    <div class="moment-image">🍜</div>
+                    <div class="moment-content">
+                        <div class="moment-header">
+                            <h3>探店 | 日式拉面</h3>
+                            <span class="moment-date">2024-11-20</span>
+                        </div>
+                        <p>发现了一家超赞的拉面店！汤底浓郁，面条筋道，溏心蛋简直完美。冬天就适合来一碗热腾腾的拉面～</p>
+                        <div class="moment-tags">
+                            <span class="moment-tag">美食</span>
+                            <span class="moment-tag">日料</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 动态卡片 2 -->
+                <div class="moment-card">
+                    <div class="moment-image">📚</div>
+                    <div class="moment-content">
+                        <div class="moment-header">
+                            <h3>读书 | 最近在看</h3>
+                            <span class="moment-date">2024-11-18</span>
+                        </div>
+                        <p>最近在读《人类简史》，作者从独特的视角重新审视人类历史，让我对世界有了全新的认识。强烈推荐！</p>
+                        <div class="moment-tags">
+                            <span class="moment-tag">阅读</span>
+                            <span class="moment-tag">思考</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 动态卡片 3 -->
+                <div class="moment-card">
+                    <div class="moment-image">🎨</div>
+                    <div class="moment-content">
+                        <div class="moment-header">
+                            <h3>艺术 | 周末看展</h3>
+                            <span class="moment-date">2024-11-15</span>
+                        </div>
+                        <p>去看了莫奈的印象派画展，站在《日出·印象》前久久不能离去。艺术真的可以跨越时空，触动人心。</p>
+                        <div class="moment-tags">
+                            <span class="moment-tag">艺术</span>
+                            <span class="moment-tag">展览</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 动态卡片 4 -->
+                <div class="moment-card">
+                    <div class="moment-image">☕</div>
+                    <div class="moment-content">
+                        <div class="moment-header">
+                            <h3>咖啡 | 手冲时光</h3>
+                            <span class="moment-date">2024-11-12</span>
+                        </div>
+                        <p>周末的清晨，自己手冲了一杯埃塞俄比亚耶加雪菲。花香和柑橘的香气在房间里弥漫，这就是生活的仪式感。</p>
+                        <div class="moment-tags">
+                            <span class="moment-tag">咖啡</span>
+                            <span class="moment-tag">生活</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 动态卡片 5 -->
+                <div class="moment-card">
+                    <div class="moment-image">🎬</div>
+                    <div class="moment-content">
+                        <div class="moment-header">
+                            <h3>电影 | 深夜观影</h3>
+                            <span class="moment-date">2024-11-10</span>
+                        </div>
+                        <p>重温了《海上钢琴师》，1900的那句"陆地对我来说是一艘太大的船"再次击中我。有些人注定活在自己的世界里。</p>
+                        <div class="moment-tags">
+                            <span class="moment-tag">电影</span>
+                            <span class="moment-tag">感悟</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 动态卡片 6 -->
+                <div class="moment-card">
+                    <div class="moment-image">🏃</div>
+                    <div class="moment-content">
+                        <div class="moment-header">
+                            <h3>运动 | 晨跑打卡</h3>
+                            <span class="moment-date">2024-11-08</span>
+                        </div>
+                        <p>今天早起跑了5公里，看着太阳慢慢升起，呼吸着清新的空气。运动真的会上瘾，身体和心情都变好了！</p>
+                        <div class="moment-tags">
+                            <span class="moment-tag">运动</span>
+                            <span class="moment-tag">健康</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 编辑动态弹窗 -->
+    <div id="moment-editor-modal" class="modal">
+        <div class="modal-content">
+            <span class="close-modal" onclick="closeMomentEditor()">&times;</span>
+            <h2 id="editor-title">添加新动态</h2>
+            <form id="moment-form" onsubmit="saveMoment(event)">
+                <div class="form-group">
+                    <label>图标 Emoji</label>
+                    <input type="text" id="moment-emoji" placeholder="🍜" maxlength="2" required>
+                    <small>输入一个emoji表情，如：🍜 📚 🎨 ☕ 🎬 🏃</small>
+                </div>
+
+                <div class="form-group">
+                    <label>标题</label>
+                    <input type="text" id="moment-title" placeholder="探店 | 日式拉面" required>
+                </div>
+
+                <div class="form-group">
+                    <label>日期</label>
+                    <input type="date" id="moment-date" required>
+                </div>
+
+                <div class="form-group">
+                    <label>内容</label>
+                    <textarea id="moment-content" placeholder="分享你的想法..." rows="5" required></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label>标签 (用逗号分隔)</label>
+                    <input type="text" id="moment-tags" placeholder="美食, 日料">
+                </div>
+
+                <input type="hidden" id="moment-index" value="">
+
+                <div class="form-actions">
+                    <button type="button" class="btn-cancel" onclick="closeMomentEditor()">取消</button>
+                    <button type="submit" class="btn-save">保存</button>
+                </div>
+            </form>
+        </div>
+    </div>
 
     <!-- 联系方式 -->
     <section id="contact" class="contact">

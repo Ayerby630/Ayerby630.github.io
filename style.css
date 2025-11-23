@@ -75,15 +75,52 @@ body {
 
 /* 首页欢迎区 */
 .hero {
-    background: linear-gradient(135deg, #fef9f5 0%, #f8d7c1 100%);
+    position: relative;
     padding: 100px 0;
     text-align: center;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    overflow: hidden;
+    background: linear-gradient(135deg, #fef9f5 0%, #f8d7c1 100%); /* 降级方案 */
+}
+
+/* 视频背景 */
+.hero-video {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    min-width: 100%;
+    min-height: 100%;
+    width: auto;
+    height: auto;
+    transform: translate(-50%, -50%);
+    z-index: 0;
+    object-fit: cover;
+}
+
+/* 遮罩层 - 让文字更清晰 */
+.hero-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(254, 249, 245, 0.6); /* 半透明的温暖色调 */
+    z-index: 1;
+}
+
+/* 确保内容在视频上方 */
+.hero .container {
+    position: relative;
+    z-index: 2;
 }
 
 .hero-content h1 {
     font-size: 3rem;
     margin-bottom: 1rem;
     color: var(--text-dark);
+    text-shadow: 2px 2px 4px rgba(255, 255, 255, 0.8);
 }
 
 .highlight {
@@ -92,14 +129,16 @@ body {
 
 .subtitle {
     font-size: 1.5rem;
-    color: var(--text-light);
+    color: var(--text-dark);
     margin-bottom: 1rem;
+    text-shadow: 1px 1px 3px rgba(255, 255, 255, 0.8);
 }
 
 .description {
     font-size: 1.1rem;
-    color: var(--text-light);
+    color: var(--text-dark);
     margin-bottom: 2rem;
+    text-shadow: 1px 1px 3px rgba(255, 255, 255, 0.8);
 }
 
 .btn {
@@ -178,6 +217,22 @@ section {
     justify-content: center;
     font-size: 8rem;
     box-shadow: 0 10px 30px rgba(244, 168, 150, 0.2);
+}
+
+/* 头像图片样式 */
+.avatar-img {
+    width: 250px;
+    height: 250px;
+    border-radius: 50%;
+    object-fit: cover;
+    box-shadow: 0 10px 30px rgba(244, 168, 150, 0.3);
+    border: 5px solid var(--secondary-color);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.avatar-img:hover {
+    transform: scale(1.05);
+    box-shadow: 0 15px 40px rgba(244, 168, 150, 0.4);
 }
 
 .about-text {
@@ -339,6 +394,250 @@ section {
 
 .read-more:hover {
     color: var(--accent-color);
+}
+
+/* 生活动态部分 */
+.moments {
+    background-color: var(--bg-color);
+}
+
+.moments-intro {
+    text-align: center;
+    font-size: 1.2rem;
+    color: var(--text-light);
+    margin-bottom: 3rem;
+}
+
+.moments-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+    gap: 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.moment-card {
+    background-color: var(--bg-light);
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 5px 20px rgba(244, 168, 150, 0.15);
+    transition: all 0.4s ease;
+    display: flex;
+    flex-direction: column;
+}
+
+.moment-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 12px 30px rgba(244, 168, 150, 0.25);
+}
+
+.moment-image {
+    background: linear-gradient(135deg, #f8d7c1, #f4a896);
+    height: 180px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 5rem;
+    transition: all 0.3s ease;
+}
+
+.moment-card:hover .moment-image {
+    transform: scale(1.1);
+}
+
+.moment-content {
+    padding: 1.5rem;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.moment-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 1rem;
+    gap: 1rem;
+}
+
+.moment-header h3 {
+    font-size: 1.3rem;
+    color: var(--text-dark);
+    margin: 0;
+    flex: 1;
+}
+
+.moment-date {
+    font-size: 0.85rem;
+    color: var(--primary-color);
+    font-weight: 500;
+    white-space: nowrap;
+}
+
+.moment-content p {
+    color: var(--text-light);
+    line-height: 1.8;
+    margin-bottom: 1rem;
+    flex: 1;
+}
+
+.moment-tags {
+    display: flex;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+}
+
+.moment-tag {
+    background-color: var(--secondary-color);
+    color: var(--text-dark);
+    padding: 4px 12px;
+    border-radius: 12px;
+    font-size: 0.85rem;
+    font-weight: 500;
+    transition: all 0.3s ease;
+}
+
+.moment-tag:hover {
+    background-color: var(--primary-color);
+    color: white;
+    transform: translateY(-2px);
+}
+
+/* 添加新动态按钮 */
+.add-moment-container {
+    text-align: center;
+    margin-bottom: 3rem;
+}
+
+.add-moment-btn {
+    background-color: var(--primary-color);
+    color: white;
+    border: none;
+    padding: 12px 30px;
+    border-radius: 25px;
+    font-size: 1rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(244, 168, 150, 0.3);
+}
+
+.add-moment-btn:hover {
+    background-color: var(--accent-color);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(244, 168, 150, 0.4);
+}
+
+/* 编辑/删除按钮 */
+.moment-actions {
+    display: flex;
+    gap: 0.5rem;
+    margin-top: 1rem;
+    padding-top: 1rem;
+    border-top: 1px solid var(--border-color);
+}
+
+.btn-edit, .btn-delete {
+    padding: 6px 16px;
+    border: none;
+    border-radius: 15px;
+    font-size: 0.85rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-weight: 500;
+}
+
+.btn-edit {
+    background-color: var(--secondary-color);
+    color: var(--text-dark);
+}
+
+.btn-edit:hover {
+    background-color: var(--primary-color);
+    color: white;
+}
+
+.btn-delete {
+    background-color: #ffebee;
+    color: #c62828;
+}
+
+.btn-delete:hover {
+    background-color: #c62828;
+    color: white;
+}
+
+/* 表单样式 */
+.form-group {
+    margin-bottom: 1.5rem;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 0.5rem;
+    color: var(--text-dark);
+    font-weight: 500;
+}
+
+.form-group input[type="text"],
+.form-group input[type="date"],
+.form-group textarea {
+    width: 100%;
+    padding: 10px 15px;
+    border: 2px solid var(--border-color);
+    border-radius: 10px;
+    font-size: 1rem;
+    font-family: var(--font-family);
+    transition: border-color 0.3s ease;
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+    outline: none;
+    border-color: var(--primary-color);
+}
+
+.form-group small {
+    display: block;
+    margin-top: 0.3rem;
+    color: var(--text-light);
+    font-size: 0.85rem;
+}
+
+.form-actions {
+    display: flex;
+    gap: 1rem;
+    justify-content: flex-end;
+    margin-top: 2rem;
+}
+
+.btn-cancel, .btn-save {
+    padding: 10px 25px;
+    border: none;
+    border-radius: 20px;
+    font-size: 1rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.btn-cancel {
+    background-color: var(--bg-color);
+    color: var(--text-dark);
+}
+
+.btn-cancel:hover {
+    background-color: var(--border-color);
+}
+
+.btn-save {
+    background-color: var(--primary-color);
+    color: white;
+}
+
+.btn-save:hover {
+    background-color: var(--accent-color);
+    transform: translateY(-2px);
 }
 
 /* 联系方式 */
@@ -676,6 +975,16 @@ section {
         margin: 10% 5%;
         padding: 2rem;
         max-height: 85vh;
+    }
+
+    .moments-grid {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+    }
+
+    .avatar-img {
+        width: 200px;
+        height: 200px;
     }
 }
 

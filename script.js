@@ -331,3 +331,220 @@ document.addEventListener('DOMContentLoaded', () => {
         observer.observe(card);
     });
 });
+
+// ========== 生活动态管理功能 ==========
+
+// 默认动态数据
+const defaultMoments = [
+    {
+        emoji: '🍜',
+        title: '探店 | 日式拉面',
+        date: '2024-11-20',
+        content: '发现了一家超赞的拉面店！汤底浓郁，面条筋道，溏心蛋简直完美。冬天就适合来一碗热腾腾的拉面～',
+        tags: ['美食', '日料']
+    },
+    {
+        emoji: '📚',
+        title: '读书 | 最近在看',
+        date: '2024-11-18',
+        content: '最近在读《人类简史》，作者从独特的视角重新审视人类历史，让我对世界有了全新的认识。强烈推荐！',
+        tags: ['阅读', '思考']
+    },
+    {
+        emoji: '🎨',
+        title: '艺术 | 周末看展',
+        date: '2024-11-15',
+        content: '去看了莫奈的印象派画展，站在《日出·印象》前久久不能离去。艺术真的可以跨越时空，触动人心。',
+        tags: ['艺术', '展览']
+    },
+    {
+        emoji: '☕',
+        title: '咖啡 | 手冲时光',
+        date: '2024-11-12',
+        content: '周末的清晨，自己手冲了一杯埃塞俄比亚耶加雪菲。花香和柑橘的香气在房间里弥漫，这就是生活的仪式感。',
+        tags: ['咖啡', '生活']
+    },
+    {
+        emoji: '🎬',
+        title: '电影 | 深夜观影',
+        date: '2024-11-10',
+        content: '重温了《海上钢琴师》，1900的那句"陆地对我来说是一艘太大的船"再次击中我。有些人注定活在自己的世界里。',
+        tags: ['电影', '感悟']
+    },
+    {
+        emoji: '🏃',
+        title: '运动 | 晨跑打卡',
+        date: '2024-11-08',
+        content: '今天早起跑了5公里，看着太阳慢慢升起，呼吸着清新的空气。运动真的会上瘾，身体和心情都变好了！',
+        tags: ['运动', '健康']
+    }
+];
+
+// 从 localStorage 加载动态，如果没有则使用默认数据
+function loadMoments() {
+    const stored = localStorage.getItem('moments');
+    if (stored) {
+        return JSON.parse(stored);
+    }
+    return defaultMoments;
+}
+
+// 保存动态到 localStorage
+function saveMomentsToStorage(moments) {
+    localStorage.setItem('moments', JSON.stringify(moments));
+}
+
+// 渲染动态卡片
+function renderMoments() {
+    const moments = loadMoments();
+    const grid = document.getElementById('moments-grid');
+
+    if (!grid) return;
+
+    grid.innerHTML = '';
+
+    moments.forEach((moment, index) => {
+        const card = document.createElement('div');
+        card.className = 'moment-card';
+        card.innerHTML = `
+            <div class="moment-image">${moment.emoji}</div>
+            <div class="moment-content">
+                <div class="moment-header">
+                    <h3>${moment.title}</h3>
+                    <span class="moment-date">${moment.date}</span>
+                </div>
+                <p>${moment.content}</p>
+                <div class="moment-tags">
+                    ${moment.tags.map(tag => `<span class="moment-tag">${tag}</span>`).join('')}
+                </div>
+                <div class="moment-actions">
+                    <button class="btn-edit" onclick="editMoment(${index})">编辑</button>
+                    <button class="btn-delete" onclick="deleteMoment(${index})">删除</button>
+                </div>
+            </div>
+        `;
+
+        // 添加淡入动画
+        card.style.opacity = '0';
+        card.style.transform = 'translateY(30px)';
+        card.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+
+        grid.appendChild(card);
+
+        // 触发动画
+        setTimeout(() => {
+            card.style.opacity = '1';
+            card.style.transform = 'translateY(0)';
+        }, index * 100);
+    });
+}
+
+// 打开编辑器（新增或编辑）
+function openMomentEditor(index = null) {
+    const modal = document.getElementById('moment-editor-modal');
+    const form = document.getElementById('moment-form');
+    const title = document.getElementById('editor-title');
+
+    // 重置表单
+    form.reset();
+    document.getElementById('moment-index').value = '';
+
+    if (index !== null) {
+        // 编辑模式
+        const moments = loadMoments();
+        const moment = moments[index];
+
+        title.textContent = '编辑动态';
+        document.getElementById('moment-emoji').value = moment.emoji;
+        document.getElementById('moment-title').value = moment.title;
+        document.getElementById('moment-date').value = moment.date;
+        document.getElementById('moment-content').value = moment.content;
+        document.getElementById('moment-tags').value = moment.tags.join(', ');
+        document.getElementById('moment-index').value = index;
+    } else {
+        // 新增模式
+        title.textContent = '添加新动态';
+        // 设置默认日期为今天
+        const today = new Date().toISOString().split('T')[0];
+        document.getElementById('moment-date').value = today;
+    }
+
+    modal.style.display = 'block';
+    document.body.style.overflow = 'hidden';
+}
+
+// 关闭编辑器
+function closeMomentEditor() {
+    const modal = document.getElementById('moment-editor-modal');
+    modal.style.display = 'none';
+    document.body.style.overflow = 'auto';
+}
+
+// 保存动态
+function saveMoment(event) {
+    event.preventDefault();
+
+    const moments = loadMoments();
+    const index = document.getElementById('moment-index').value;
+
+    const newMoment = {
+        emoji: document.getElementById('moment-emoji').value.trim(),
+        title: document.getElementById('moment-title').value.trim(),
+        date: document.getElementById('moment-date').value,
+        content: document.getElementById('moment-content').value.trim(),
+        tags: document.getElementById('moment-tags').value
+            .split(',')
+            .map(tag => tag.trim())
+            .filter(tag => tag)
+    };
+
+    if (index === '') {
+        // 新增 - 添加到开头
+        moments.unshift(newMoment);
+    } else {
+        // 编辑 - 更新现有动态
+        moments[parseInt(index)] = newMoment;
+    }
+
+    saveMomentsToStorage(moments);
+    renderMoments();
+    closeMomentEditor();
+}
+
+// 编辑动态
+function editMoment(index) {
+    openMomentEditor(index);
+}
+
+// 删除动态
+function deleteMoment(index) {
+    if (confirm('确定要删除这条动态吗？')) {
+        const moments = loadMoments();
+        moments.splice(index, 1);
+        saveMomentsToStorage(moments);
+        renderMoments();
+    }
+}
+
+// 页面加载时渲染动态
+document.addEventListener('DOMContentLoaded', () => {
+    renderMoments();
+
+    // ESC键关闭编辑器
+    document.addEventListener('keydown', (e) => {
+        const editorModal = document.getElementById('moment-editor-modal');
+        if (editorModal && e.key === 'Escape' && editorModal.style.display === 'block') {
+            closeMomentEditor();
+        }
+    });
+
+    // 点击模态框外部关闭
+    const editorModal = document.getElementById('moment-editor-modal');
+    if (editorModal) {
+        editorModal.addEventListener('click', (e) => {
+            if (e.target === editorModal) {
+                closeMomentEditor();
+            }
+        });
+    }
+});
