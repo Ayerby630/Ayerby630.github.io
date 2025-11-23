@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>我的个人网站</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- 导航栏 -->
+    <nav class="navbar">
+        <div class="container">
+            <div class="nav-brand">我的网站</div>
+            <ul class="nav-menu">
+                <li><a href="#home">首页</a></li>
+                <li><a href="#about">关于我</a></li>
+                <li><a href="#projects">作品</a></li>
+                <li><a href="#travels">足迹</a></li>
+                <li><a href="#blog">博客</a></li>
+                <li><a href="#contact">联系</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- 首页/欢迎区 -->
+    <section id="home" class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <h1 class="fade-in">你好，我是 <span class="highlight">坚瑜</span></h1>
+                <p class="subtitle fade-in">欢迎来到我的个人空间</p>
+                <p class="description fade-in">这里分享我的想法、作品和生活</p>
+                <a href="#about" class="btn">了解更多</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- 关于我 -->
+    <section id="about" class="about">
+        <div class="container">
+            <h2 class="section-title">关于我</h2>
+            <div class="about-content">
+                <div class="about-image">
+                    <div class="avatar-placeholder">👤</div>
+                </div>
+                <div class="about-text">
+                    <h3>你好！</h3>
+                    <p>我是一名充满热情的创作者，喜欢探索新事物，记录生活中的美好瞬间。</p>
+                    <p>在这里，我分享我的项目、想法和学习心得。</p>
+
+                    <div class="skills">
+                        <h4>我的兴趣</h4>
+                        <div class="skill-tags">
+                            <span class="tag">摄影</span>
+                            <span class="tag">写作</span>
+                            <span class="tag">设计</span>
+                            <span class="tag">旅行</span>
+                            <span class="tag">阅读</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 作品展示 -->
+    <section id="projects" class="projects">
+        <div class="container">
+            <h2 class="section-title">我的作品</h2>
+            <div class="projects-grid">
+                <div class="project-card">
+                    <div class="project-image">📸</div>
+                    <div class="project-content">
+                        <h3>项目标题 1</h3>
+                        <p>这是我的第一个项目，简要描述项目内容和成果。</p>
+                        <div class="project-tags">
+                            <span class="tag-small">标签1</span>
+                            <span class="tag-small">标签2</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <div class="project-image">🎨</div>
+                    <div class="project-content">
+                        <h3>项目标题 2</h3>
+                        <p>这是我的第二个项目，展示了我的创作能力。</p>
+                        <div class="project-tags">
+                            <span class="tag-small">设计</span>
+                            <span class="tag-small">创意</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <div class="project-image">✨</div>
+                    <div class="project-content">
+                        <h3>项目标题 3</h3>
+                        <p>这个项目体现了我对细节的追求和执行力。</p>
+                        <div class="project-tags">
+                            <span class="tag-small">实践</span>
+                            <span class="tag-small">成长</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <div class="project-image">🌟</div>
+                    <div class="project-content">
+                        <h3>项目标题 4</h3>
+                        <p>最新的项目，融合了我的多项技能和创意想法。</p>
+                        <div class="project-tags">
+                            <span class="tag-small">综合</span>
+                            <span class="tag-small">创新</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 旅行足迹 -->
+    <section id="travels" class="travels">
+        <div class="container">
+            <h2 class="section-title">我的足迹</h2>
+            <p class="travels-intro">世界很大，我想去看看。每一次旅行都是一次成长，每一个地方都留下了独特的回忆。</p>
+
+            <div class="travels-grid">
+                <!-- 日本大阪 -->
+                <div class="travel-card" data-location="osaka">
+                    <div class="travel-image">🏯</div>
+                    <div class="travel-overlay">
+                        <h3>日本 · 大阪</h3>
+                        <p class="travel-snippet">古老与现代交织的魅力之城</p>
+                        <button class="view-notes-btn">查看心得</button>
+                    </div>
+                </div>
+
+                <!-- 新马泰 -->
+                <div class="travel-card" data-location="southeast-asia">
+                    <div class="travel-image">🌴</div>
+                    <div class="travel-overlay">
+                        <h3>新马泰之旅</h3>
+                        <p class="travel-snippet">东南亚的热带风情</p>
+                        <button class="view-notes-btn">查看心得</button>
+                    </div>
+                </div>
+
+                <!-- 仙本那 -->
+                <div class="travel-card" data-location="semporna">
+                    <div class="travel-image">🤿</div>
+                    <div class="travel-overlay">
+                        <h3>马来西亚 · 仙本那</h3>
+                        <p class="travel-snippet">潜入深蓝，考取潜水证的回忆</p>
+                        <button class="view-notes-btn">查看心得</button>
+                    </div>
+                </div>
+
+                <!-- 土耳其 -->
+                <div class="travel-card" data-location="turkey">
+                    <div class="travel-image">🎈</div>
+                    <div class="travel-overlay">
+                        <h3>土耳其 · 卡帕多奇亚</h3>
+                        <p class="travel-snippet">热气球升空，梦幻童话般的体验</p>
+                        <button class="view-notes-btn">查看心得</button>
+                    </div>
+                </div>
+
+                <!-- 俄罗斯 -->
+                <div class="travel-card" data-location="russia">
+                    <div class="travel-image">✨</div>
+                    <div class="travel-overlay">
+                        <h3>俄罗斯 · 摩尔曼斯克</h3>
+                        <p class="travel-snippet">极光下的浪漫与震撼</p>
+                        <button class="view-notes-btn">查看心得</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 旅行心得弹窗 -->
+    <div id="travel-modal" class="modal">
+        <div class="modal-content">
+            <span class="close-modal">&times;</span>
+            <div id="modal-body"></div>
+        </div>
+    </div>
+
+    <!-- 博客文章 -->
+    <section id="blog" class="blog">
+        <div class="container">
+            <h2 class="section-title">博客文章</h2>
+            <div class="blog-list">
+                <article class="blog-card">
+                    <div class="blog-date">2024年11月20日</div>
+                    <h3>我的第一篇博客文章</h3>
+                    <p>这是博客文章的摘要，介绍文章的主要内容，吸引读者点击阅读...</p>
+                    <a href="#" class="read-more">阅读更多 →</a>
+                </article>
+
+                <article class="blog-card">
+                    <div class="blog-date">2024年11月15日</div>
+                    <h3>分享一些生活感悟</h3>
+                    <p>记录最近的思考和感悟，关于生活、工作和成长的点滴...</p>
+                    <a href="#" class="read-more">阅读更多 →</a>
+                </article>
+
+                <article class="blog-card">
+                    <div class="blog-date">2024年11月10日</div>
+                    <h3>旅行的意义</h3>
+                    <p>上个月的旅行让我收获颇多，在这里分享一些旅途中的故事和照片...</p>
+                    <a href="#" class="read-more">阅读更多 →</a>
+                </article>
+
+                <article class="blog-card">
+                    <div class="blog-date">2024年11月5日</div>
+                    <h3>如何保持创造力</h3>
+                    <p>分享我保持创造力和灵感的一些方法和习惯...</p>
+                    <a href="#" class="read-more">阅读更多 →</a>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <!-- 联系方式 -->
+    <section id="contact" class="contact">
+        <div class="container">
+            <h2 class="section-title">联系我</h2>
+            <div class="contact-content">
+                <p class="contact-intro">很高兴与你交流，可以通过以下方式联系我：</p>
+
+                <div class="contact-methods">
+                    <div class="contact-item">
+                        <div class="contact-icon">📧</div>
+                        <h4>邮箱</h4>
+                        <a href="mailto:your.email@example.com">your.email@example.com</a>
+                    </div>
+
+                    <div class="contact-item">
+                        <div class="contact-icon">💬</div>
+                        <h4>微信</h4>
+                        <p>Sysu13327002</p>
+                    </div>
+
+                    <div class="contact-item">
+                        <div class="contact-icon">🐦</div>
+                        <h4>社交媒体</h4>
+                        <div class="social-links">
+                            <a href="#">微博</a>
+                            <a href="#">知乎</a>
+                            <a href="#">GitHub</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 页脚 -->
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2024 我的网站. 保留所有权利.</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
